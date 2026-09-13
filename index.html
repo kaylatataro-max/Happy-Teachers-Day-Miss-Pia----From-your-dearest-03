@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Teacher's Day, Miss Pia! | From your 03 Nakshies</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cream-bg': '#FFFDF0',
+                        'pink-header': '#FF94B9',
+                        'pink-card': '#FFF0F5',
+                        'pink-border': '#FFB6C1',
+                        'pink-accent': '#FF4D88',
+                        'yellow-accent': '#FFE79A',
+                        'yellow-glow': '#FFF3C4',
+                        'cute-pink': '#FF6B9B',
+                    },
+                    fontFamily: {
+                        'handwriting': ['Caveat', 'cursive'],
+                        'fredoka': ['Fredoka', 'sans-serif'],
+                        'sans': ['Quicksand', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFFDF0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #FFB6C1;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FF4D88;
+        }
+
+        /* Floating particles */
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 50;
+            animation: floatUp 4s ease-out forwards;
+        }
+
+        @keyframes floatUp {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-120px) scale(1.4) rotate(20deg);
+            }
+        }
+
+        /* Background floating animation */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(5deg); }
+        }
+        .animate-float {
+            animation: floatSlow 4s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+            animation: floatSlow 5s ease-in-out 1.5s infinite;
+        }
+
+        /* Polaroid frame styling */
+        .polaroid-frame {
+            box-shadow: 0 10px 25px -5px rgba(255, 107, 155, 0.25), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .polaroid-frame:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 30px -10px rgba(255, 107, 155, 0.35);
+        }
+
+        /* Student card hover effect */
+        .student-card {
+            transition: all 0.25s ease-in-out;
+            background: linear-gradient(135deg, #ffffff 0%, #fffbfd 100%);
+        }
+        .student-card:hover {
+            transform: translateY(-4px) scale(1.015);
+            border-color: #FF6B9B;
+            box-shadow: 0 10px 20px -5px rgba(255, 107, 155, 0.2);
+        }
+
+        /* Cute button animation */
+        .cute-btn {
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .cute-btn:hover {
+            transform: scale(1.06) rotate(-1deg);
+        }
+        .cute-btn:active {
+            transform: scale(0.96);
+        }
+
+        /* Tape element effect */
+        .tape {
+            background-color: rgba(255, 255, 255, 0.65);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            backdrop-filter: blur(2px);
+        }
+    </style>
+</head>
+<body class="bg-cream-bg font-sans text-gray-800 min-h-screen relative overflow-x-hidden selection:bg-pink-200 selection:text-pink-600">
+
+    <!-- Background Decoration Doodles -->
+    <div class="fixed inset-0 pointer-events-none opacity-40 z-0 overflow-hidden" id="bgDoodles">
+        <i class="fa-solid font-bold fa-star absolute text-yellow-300 text-xl top-12 left-10 animate-float"></i>
+        <i class="fa-solid fa-heart absolute text-pink-300 text-2xl top-40 left-1/4 animate-float-delayed"></i>
+        <i class="fa-solid fa-sparkles absolute text-yellow-400 text-2xl top-20 right-16 animate-float"></i>
+        <i class="fa-solid fa-heart absolute text-pink-400 text-lg top-1/3 right-10 animate-float-delayed"></i>
+        <i class="fa-solid fa-star absolute text-yellow-300 text-2xl bottom-32 left-16 animate-float"></i>
+        <i class="fa-solid fa-heart absolute text-pink-300 text-3xl bottom-20 right-1/4 animate-float"></i>
+    </div>
+
+    <!-- Top Action Bar -->
+    <div class="fixed top-4 right-4 z-40 flex items-center gap-3">
+        <!-- Background Music Toggle -->
+        <button id="bgmBtn" onclick="toggleBGM()" class="bg-white/90 backdrop-blur border-2 border-pink-300 text-pink-600 px-3 py-2 rounded-full shadow-md hover:bg-pink-50 transition flex items-center gap-2 text-sm font-semibold cute-btn">
+            <i class="fa-solid fa-music text-pink-500" id="bgmIcon"></i>
+            <span id="bgmText">Play Music</span>
+        </button>
+        <!-- Heart Counter Button -->
+        <button onclick="sendHeart(event)" class="bg-gradient-to-r from-pink-500 to-pink-600 text-white px-4 py-2 rounded-full shadow-lg hover:from-pink-600 hover:to-pink-700 transition flex items-center gap-2 text-sm font-bold cute-btn border-2 border-white">
+            <i class="fa-solid fa-heart text-white animate-pulse"></i>
+            <span>Send Love</span>
+            <span id="heartCount" class="bg-white text-pink-600 rounded-full px-2 py-0.5 text-xs font-black">0</span>
+        </button>
+    </div>
+
+    <!-- MAIN CONTAINER -->
+    <main class="max-w-6xl mx-auto px-4 py-6 md:py-10 relative z-10">
+
+        <!-- HEADER BANNER SECTION -->
+        <header class="bg-gradient-to-br from-pink-200 via-pink-100 to-yellow-100 rounded-3xl p-6 md:p-10 border-4 border-pink-300 shadow-xl relative overflow-hidden mb-12">
+            
+            <div class="absolute -top-3 -left-3 text-pink-400 text-4xl transform -rotate-12 select-none">🎀</div>
+            <div class="absolute top-4 right-6 text-yellow-400 text-3xl animate-bounce select-none">✨</div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                
+                <!-- Class Photo Polaroid -->
+                <div class="md:col-span-5 flex justify-center">
+                    <div class="polaroid-frame bg-white p-4 pb-6 rounded-2xl border-2 border-pink-200 transform -rotate-2 relative max-w-sm w-full">
+                        <div class="tape absolute -top-3 left-1/2 transform -translate-x-1/2 w-28 h-7 rotate-1 z-10 border border-white/80"></div>
+                        
+                        <div class="relative overflow-hidden rounded-xl border-2 border-pink-200 aspect-[4/3] bg-pink-50">
+                            <img id="mainClassPhoto" src="class_photo.jpg" alt="03 Nakshies Class Photo" class="w-full h-full object-cover" onerror="handleImageError(this)">
+                        </div>
+
+                        <div class="text-center mt-3 font-handwriting text-2xl text-pink-600 font-bold tracking-wide flex items-center justify-center gap-2">
+                            <span>From your 03 Nakshies ♡</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Title Banner -->
+                <div class="md:col-span-7 text-center md:text-left space-y-4">
+                    <div class="inline-block bg-white/80 backdrop-blur-sm px-4 py-1.5 rounded-full border border-pink-300 text-pink-600 font-fredoka font-semibold text-sm shadow-sm">
+                        🌸 Happy Teacher's Day
+                    </div>
+                    
+                    <h1 class="font-fredoka text-4xl sm:text-5xl md:text-6xl font-extrabold text-pink-600 tracking-tight leading-none">
+                        HAPPY <br class="hidden sm:inline"/>
+                        <span class="text-pink-500 drop-shadow-sm">TEACHER'S DAY,</span> <br/>
+                        <span class="text-yellow-500 drop-shadow-md underline decoration-pink-300 decoration-wavy decoration-2">MISS PIA!</span>
+                    </h1>
+
+                    <p class="font-handwriting text-2xl md:text-3xl text-gray-700 leading-relaxed max-w-xl font-semibold">
+                        "Thank you for being our guide, our support, and our safe place. We appreciate you so much! ❤️"
+                    </p>
+
+                    <div class="pt-2 flex flex-wrap gap-4 justify-center md:justify-start">
+                        <a href="#messages-section" class="cute-btn inline-flex items-center gap-2 bg-pink-500 hover:bg-pink-600 text-white font-fredoka font-bold text-lg px-7 py-3.5 rounded-2xl shadow-lg border-2 border-pink-300">
+                            <i class="fa-solid fa-envelope-open-text text-xl"></i>
+                            <span>View Messages</span>
+                        </a>
+                        
+                        <button onclick="triggerConfetti()" class="cute-btn inline-flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-yellow-950 font-fredoka font-bold text-lg px-6 py-3.5 rounded-2xl shadow-md border-2 border-yellow-200">
+                            <span>🎉 Celebrate!</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </header>
+
+        <!-- MESSAGES SECTION -->
+        <section id="messages-section" class="scroll-mt-6">
+            
+            <div class="text-center mb-8 space-y-2">
+                <div class="inline-flex items-center gap-2 text-yellow-500 font-bold text-xl">
+                    <span>★</span>
+                    <span class="h-0.5 w-12 bg-pink-300 rounded-full"></span>
+                    <span>★</span>
+                </div>
+                
+                <div class="flex flex-col md:flex-row items-center justify-center gap-4 mb-4">
+                    <div class="relative">
+                        <img id="secondaryClassPhoto" src="class_photo.jpg" alt="03 Nakshies Small Preview" class="w-24 h-24 rounded-2xl object-cover border-4 border-white shadow-md transform -rotate-3" onerror="handleImageError(this)">
+                    </div>
+                    <div>
+                        <h2 class="font-fredoka text-3xl md:text-5xl font-bold text-pink-600 flex items-center justify-center md:justify-start gap-2 flex-wrap">
+                            <span>Messages from your cute 03 nakshies</span>
+                            <span class="text-pink-400">♥</span>
+                        </h2>
+                        <p class="font-handwriting text-2xl text-gray-600 max-w-lg mx-auto md:mx-0">
+                            A little collection of messages from your 03 nakshies, made especially for you. ♡
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STUDENT CARDS GRID -->
+            <div id="messagesGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Cards render here via JS -->
+            </div>
+
+            <div id="noResults" class="hidden text-center py-12 bg-white rounded-3xl border-2 border-dashed border-pink-200 max-w-md mx-auto">
+                <div class="text-4xl mb-2">🔍</div>
+                <p class="font-fredoka text-lg text-gray-600">No matching student messages found!</p>
+            </div>
+
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="mt-16 text-center border-t-2 border-pink-200 pt-8 pb-12">
+            <div class="font-fredoka text-2xl md:text-3xl font-bold text-pink-500 flex items-center justify-center gap-2">
+                <span>✨ We love you, Miss Pia! ✨</span>
+            </div>
+            <p class="font-handwriting text-xl text-gray-500 mt-2">
+                Crafted with love by your 03 Nakshies ❤️
+            </p>
+        </footer>
+
+    </main>
+
+    <!-- CARD DETAIL MODAL POPUP -->
+    <div id="cardModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-gradient-to-br from-pink-50 via-white to-yellow-50 rounded-3xl border-4 border-pink-300 p-6 md:p-8 max-w-lg w-full shadow-2xl transform scale-95 transition-transform duration-300 relative" id="modalContainer">
+            
+            <button onclick="closeModal()" class="absolute top-4 right-4 bg-pink-100 text-pink-600 hover:bg-pink-500 hover:text-white w-10 h-10 rounded-full flex items-center justify-center font-bold transition">
+                ✕
+            </button>
+
+            <div class="tape absolute -top-4 left-1/2 transform -translate-x-1/2 w-32 h-8 rotate-2 border border-white"></div>
+
+            <div class="text-center pt-2 space-y-4">
+                <span id="modalNumber" class="inline-block bg-pink-100 text-pink-600 font-fredoka font-bold text-sm px-4 py-1 rounded-full border border-pink-200">
+                    Student #1
+                </span>
+                
+                <h3 id="modalName" class="font-fredoka text-2xl sm:text-3xl text-pink-600 font-bold">
+                    Student Name
+                </h3>
+                
+                <div class="bg-white p-6 rounded-2xl border-2 border-pink-100 shadow-inner my-4 max-h-[50vh] overflow-y-auto">
+    <p id="modalMessage" class="font-handwriting text-2xl sm:text-3xl text-gray-700 leading-relaxed font-semibold">
+        "Message goes here..."
+    </p>
+</div>
+
+                <div class="flex items-center justify-between text-xs font-semibold text-pink-400 px-2 pt-2">
+                    <span>From 03 Nakshies</span>
+                    <span>To Miss Pia ♥</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AUDIO PLAYER -->
+    <audio id="bgmAudio" loop preload="auto">
+        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=acoustic-guitars-ambient-11270.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // List of all 40 Nakshies
+        const nakshiesData = [
+            { id: 1, name: "Amores, Khateleen Y.", text: "Happy Teacher's Day po Ms. Pia! Honestly, your subject was one of the subjects I was scared of at first, but you made it lighter for us. Thank you for your patience with us, especially to us na slow learners. You still teach us in a kind way and you make the lesson easy to understand. Thank you po for your effort everyday, we’re grateful to have youu!!! 🫶🏻🫶🏻🫶🏻" },
+            { id: 2, name: "Anacay, Kathleen Keira M.", text: "Happy Teacher's Day po, Miss Pia! Thank you so much for your guidance, patience, passion for teaching, and understanding toward each and every student in our section. You make us feel like there's always someone here to support us and help us whenever we need it. I hope that you never lose your passion for the things that you love doing, and I hope that you continue spreading positivity and inspiration to students like me! 😁💗✨ Happy Teacher's Day po, Miss!" },
+            { id: 3, name: "Dahilig, Lhian M.", text: "HELLO TO THE WONDERFUL MATH TEACHER AND ADVISER OF 03, MS. PIA!!!!! THE GOATTT 🤯😌🙏 Happy Teacher’s Day po, Ms. Pia!! 🫡💐 Thank you so much for always being supportive, caring, patient, and resilient with us. We really appreciate all the effort you put into teaching and guiding us, even when we can be a little chaotic sometimes HAHAHAHA 😭. You make Math feel more fun and easier to understand, and you always make the lessons feel less intimidating, especially when our brains are already fighting for their lives with all the school works😭😭 🤯. I’m really grateful that you’re our adviser this school year because I feel like we’re going to learn a lot, not just from Math, but also from you as our teacher and adviser. Thank you for being someone we can look up to and for always trying your best to guide us in the right direction❤️💐. Your patience and dedication definitely don’t go unnoticed po! 🫡💖 I’m really looking forward to spending the rest of the A.Y. with the best adviser and getting to know you more and better! 🥰 I hope we can make lots of good memories together as 03, and hopefully survive all the Math lessons, activities, and whatever else this school year throws at us HAHAHAHA 😭. We’re really lucky to have you as our teacher and adviser, and I hope you know how much we appreciate you! 💐 Once again, HAPPY TEACHER’S DAY PO, MS. PIA!!!!! 🤩🤩 Thank you for everything you do for us, and please take care of yourself too! Get well soon pooo!! 🫡🥰 Peace out, and cheers to more memories, more learning, and hopefully fewer Math-induced headaches HAHAHAHA🫠 LOVE YOU PO, MS. PIA!!!!! 🤗 💐 And ang lagi nyo pong sinasabi sa Ms teams is KEEP SHINING ✨" },
+            { id: 4, name: "Dela Cruz, Shantara Denise A.", text: "Happy Teacher’s Day, Miss Pia! Thank you for always being patient with us and for guiding us whenever we need help. We know that being our adviser isn’t always easy, especially when our class gets noisy and chaotic, but you still continue to understand and support us. We’re really grateful to have you as our adviser!" },
+            { id: 5, name: "Develos, Zyra Louise L.", text: "Happy Teacher’s Day, Miss Pia! Thank you for all the effort, time, and patience you give to our class. You always remind us to do our best and to be responsible with our work. Even though we don’t always show it, we truly appreciate everything you do for us. We hope you have a wonderful Teacher’s Day!" },
+            { id: 6, name: "Espiritu, Mary Angela C.", text: "Happy Teachers Day, Ms. Pia! I love the way you teach, I understand your lessons very easily. Thank you for being an understanding teacher, we love you so much!" },
+            { id: 7, name: "Garma, Janice Kaye A.", text: "To our wonderful adviser, Miss Pia, thank you for being there to guide us through our school journey. Your advice and encouragement help us become better students and better people. We appreciate the way you patiently handle our different personalities and always try to understand us. Happy Teacher’s Day, Miss Pia!" },
+            { id: 8, name: "Gilla, Nicole J.", text: "HAPPY TEACHERS DAY PO MS PIAAAA, thank you po sa guidance nyo po and sa support. Na appericiate po namin sobra lahat po ng ginagawa nyo for us! THANK YOU PO AND  GOD BLESS!" },
+            { id: 9, name: "Langkuno, Loviel A.", text: "Happy Teacher’s Day, Miss Pia! 💗 Thank you for everything you have done for us, for being patient, open, friendly, and passionate about teaching us new things. Thank you for always treating us like your own children, being someone who would discipline us when needed but also support us to the max without any doubt. Thank you, Miss Pia, for being such a great teacher, a mother figure, and an amazing person. We’re really grateful to have you as our teacher and advisor for our first year here in NU. Happy Teacher’s Day! 💗" },
+            { id: 10, name: "Mangahas, Sophia Julianne V.", text: "Happy Teachers’ Day, Ms.Pia! Thank you so much for all your patience, guidance, and understanding. We truly appreciate all the effort you put into teaching and supporting us. Thank you for always believing in us and encouraging us to do our best. We are very grateful to have you as our adviser. May we share more wonderful memories together! We love you Ms.Pia! Happy Teachers’ Day! ❤️🫶" },
+            { id: 11, name: "Merincillo, Graciela J.", text: "Happy Teachers’ Day, Ms. Pia! 💗 Thank you for your patience, guidance, and for making learning a little easier and more meaningful. We truly appreciate everything you do for us! 🥹🫰" },
+            { id: 12, name: "Palaganas, Zyra Shaine M.", text: "Happy Teachers' Day to our beloved adviser, Ms. Pia! We might not have seen or interacted in school as frequently due to all the class suspensions, but your guidance, warmth, and support have made a huge impact on us. Thank you for always being patient, keeping us on track despite the unpredictable schedule, and making sure we feel cared for even from a distance. We are praying for your quick recovery and hoping you feel much better soon. Please take care of yourself always, Miss Pia! WE LOVE YOU SO MUCH! 🥰💕" },
+            { id: 13, name: "Pinpin, Nicole A.", text: "Happy Teacher’s Day, Miss Pia! We are very thankful to have you as our adviser because you always make sure that we are doing okay, both with our schoolwork and as a class. Thank you for correcting us when we make mistakes and encouraging us when things get difficult. Your guidance means a lot to us!" },
+            { id: 14, name: "Ramoneda, Roisin E.", text: "Dear Miss Pia, Happy Teacher’s Day! Thank you for being so understanding and patient with our class. We know that sometimes we can be loud, stubborn, or difficult to handle, but you never stop guiding us. Thank you for all the reminders, lessons, and advice that you give us. We truly appreciate you!" },
+            { id: 15, name: "Tataro, Mikayla Ianna N.", text: "Thank you for your guidance and constant support. Even sometimes we don't follow you and nagiging matigas na yung ulo and also kahit na minsan lang tayo nakakapagmeet every week, you gave us all that we need and you always stay by our side guiding and supporting us 03 with full of patience and sincerity ♡ -from your pinakacute na P.I.O" },
+            { id: 16, name: "Vernguas, Avril Joy P.", text: "happy teacher’s day, Ms. Pia! thank you for always guiding us, being patient with us, and putting up with our kakulitan and ingay, we’re really lucky to have you as our adviser! thank you for always supporting us and believing in us. we appreciate you so much, Ms. Pia! ( 〃▽〃) - Avril hehehehe :P" },
+            { id: 17, name: "Agripa, Sean Eldred E.", text: "Happy Teacher's Day, Miss Pia! Thank you for your kindness and patience. It's always a pleasure to be in your class. Get well soon, Miss, and looking forward to learning more from you!" },
+            { id: 18, name: "Bueta, Chris Joseph B.", text: "Happy Teacher’s Day to our amazing adviser, Miss Pia! Thank you for making our classroom a place where we can learn, grow, and create memories together. We’re grateful for every lesson you teach us and every time you encourage us to do better. We may not say it often, but we are really thankful to have you as our teacher." },
+            { id: 19, name: "Buffi, Zhaff T.", text: "Happy Teacher’s Day, Ms. Pia! Thank you po for always teaching and guiding us with patience. I really appreciate all the effort you put into our class. Wishing you po a wonderful Teacher’s Day!" },
+            { id: 20, name: "Ciasico, Seann M.", text: "Happy Teacher’s Day, Miss Pia! Your dedication and hard work as our adviser are something we truly admire. Thank you for always taking the time to listen to us and for helping us whenever we face challenges in school. We hope you know that all your efforts are noticed and appreciated. Thank you for everything, Miss Pia!" },
+            { id: 21, name: "Crow, Sean Jeric S.", text: "Dear Miss Pia, I just want to say thank you for being such a kind and nice teacher. As your class monitor in Math, I really appreciate how you teach us. I like your way of teaching because you explain things clearly and make Math easier to understand, even when the lessons get difficult. I also appreciate how patient and approachable you are with us. You make the class feel more comfortable, and it’s easier for us to ask questions when we don’t understand something. Thank you for all the effort you put into teaching us and for always being kind to our class. I’m really glad that you’re our Math teacher, and I hope you know that we appreciate you a lot. Thank you, Miss Pia! -From: Your Math Class Monitor, Crow" },
+            { id: 22, name: "Datu, Marcus Uriel C.", text: "To Miss Pia, Happy Teacher’s Day! Thank you for all the guidance and support you give our class. Every reminder you give, even the ones we sometimes complain about, is actually helping us become more responsible. Thank you for being patient with us and for always wanting what is best for our class. We’re lucky to have you!"},
+            { id: 23, name: "Dela Rosa, Christ Denver S.", text: "Miss pia, thank you for being a wonderful, patient and understanding teacher. Thank you for always guiding us and being there to support us. I’m truly grateful to have you as my teacher! 🥰❤️" },
+            { id: 24, name: "Enong, Kurei Anthony C.", text: "Happy Teacher’s Day, Miss Pia! Thank you for being more than just our adviser. You are also someone who motivates us to keep going when school becomes difficult. Your words of encouragement and advice have helped us more than you probably realize. We are grateful for your kindness, patience, and dedication to our class!" },
+            { id: 25, name: "Gayo, Romar Kyle", text: "Thank you for always being so supportive of us. Happy Teacher's Day! ♡" },
+            { id: 26, name: "Guste, Christian Thaddeus B.", text: "Dear Miss Pia, we want to wish you a very Happy Teacher’s Day! Thank you for always guiding us and reminding us about the things we need to improve. We appreciate how you continue to believe in us even when we make mistakes. Thank you for being a teacher who cares about her students and wants to see us succeed!" },
+            { id: 27, name: "Jacobo, Ethan T.", text: "Happy Teacher’s Day, Miss Pia! We truly appreciate all the sacrifices and effort you put into being our adviser. From reminding us about school activities to helping us when we’re confused, you are always there for our class. Thank you for your patience and understanding. We hope today reminds you how much your students appreciate you!." },
+            { id: 28, name: "Jamisola, Vincent Viel J.", text: "To our beloved adviser, Miss Pia, Happy Teacher’s Day! Thank you for being someone we can learn from and look up to. You teach us not only lessons from school but also important values that we can use in our everyday lives. Thank you for always encouraging us to become better versions of ourselves. We appreciate you so much!" },
+            { id: 29, name: "Jose, Charles Daniel S.", text: "To our beloved adviser, Miss Pia, Happy Teacher’s Day! Thank you for being someone we can learn from and look up to. You teach us not only lessons from school but also important values that we can use in our everyday lives. Thank you for always encouraging us to become better versions of ourselves. We appreciate you so much!" },
+            { id: 30, name: "Lucero, Joshua Andrei S.", text: "Dear Ms. Pia Thank you po so far for what you have done for us, thank you po for being our advisory teacher and do please continue guiding us throughout our journey. I hope that you're okay po with your current condition and always stay safe and healthy po, if ever that you need help you can also ask us po don't be afraid to ask po. Thank you po Ms. Pia and we hope to make much more memories and achievements with you po. - Sincerely Shua" },
+            { id: 31, name: "Mendoza, Zajian C.", text: "Thank you for always encouraging us. You're very special yo us miss!" },
+            { id: 32, name: "Mirabel, Silvestre Jr. V.", text: "Dear Miss Pia, Happy Teacher’s Day! Every lesson, reminder, and piece of advice you give us is something that can help us in the future. Thank you for always pushing us to do our best and for correcting us when we need it. We may not always realize it immediately, but your guidance is helping us grow. Thank you for being our adviser!" },
+            { id: 33, name: "Munte, Matt Yvan P.", text: "Happy Teacher's Day, Miss Pia! You're the best! Thank you for being you." },
+            { id: 34, name: "Neyra, Gabriel T.", text: "Happy Teacher's Day, Miss Pia! Thanks for keeping learning fun and way less stressful." },
+            { id: 35, name: "Pakinggan, Eros S.", text: "Happy Teacher’s Month Miss Pia!! ❤️🎉 To our dear adviser and mathematics teacher, thank you for always being there for us, guiding us, reminding us of what we need to do, and somehow managing to survive our class every single day.😂 We know we can be loud, chaotic, and sometimes a little too much, but you still continue to guide and support us. Thank you for your patience, understanding, and for always looking out for our class. We really appreciate everything you do, even the little things that we sometimes forget to notice.With you also being our math teacher, thank you for patiently teaching us even when our brains have already left the classroom after seeing the first equation. 😭 Thank you for explaining things again and again, answering our questions, and helping us understand lessons that sometimes make us question all our life choices. 😂 We may not always get the right answer, but we definitely appreciate your effort in helping us get there. You as both our adviser and math teacher, thank you for making our everyday lives more memorable. Thank you for putting up with our random moments, our questions, our mistakes, and all the little chaos that comes with having us as students. We’re really lucky to have you who continue to guide us while also making school feel a little lighter and more enjoyable. We hope you have a wonderful Teacher’s Month! Because you absolutely deserve it! ❤️ Thank you for everything you do for us, and please continue being patient with us because we still have a lot of school year left. 😭😂 Happy Teacher’s Day, Miss Pia! We appreciate you so muchhhh! ❤️📚🎉" },
+            { id: 36, name: "Solana, Prince Hedrick P.", text: "To our amazing adviser, Miss Pia, Happy Teacher’s Day! Thank you for being someone we can depend on when we need guidance. You always remind us to take responsibility for our actions and to give our best in everything we do. We appreciate your kindness, patience, and dedication. We are truly grateful to have you as our adviser!" },
+            { id: 37, name: "Tenedero, James Aaron C.", text: "Happy Teacher's Day, Miss Pia! Thank you for being a patient and inspiring teacher and advisor to all of us!" },
+            { id: 38, name: "Tesoro, Marcus Aurelius P.", text: "Happy Teacher’s Day, Miss Pia! Thank you for your endless patience, especially when our class gets a little too loud. 😭😂 Even when we test your patience, you still continue to guide and teach us. We appreciate all the reminders, advice, and effort you give to our class. Thank you for never giving up on us!" },
+            { id: 39, name: "Victor, Matthew J.", text: "Your passion for teaching is truly inspiring. Thank you for everything!" },
+            { id: 40, name: "Yutuc, Ezekiel James", text: "hi miss pia Thank you for your endless support and for always cheering us on. We appreciate you so much!" }
+        ];
+
+        // Load saved count from browser memory (defaults to 0 if none saved)
+        let heartCounter = localStorage.getItem('totalHearts') ? parseInt(localStorage.getItem('totalHearts')) : 0;
+
+        // Image fallback handler
+        function handleImageError(imgElement) {
+            if (imgElement.src.endsWith('.jpg')) {
+                imgElement.src = 'class_photo.png';
+            } else if (imgElement.src.endsWith('.png')) {
+                imgElement.src = 'class_photo.jpeg';
+            }
+        }
+
+        // Render Student Cards
+        function renderCards(list) {
+            const grid = document.getElementById('messagesGrid');
+            const noResults = document.getElementById('noResults');
+            
+            grid.innerHTML = '';
+
+            if (list.length === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+            }
+
+            list.forEach(item => {
+                const card = document.createElement('div');
+                card.className = "student-card rounded-2xl p-5 border-2 border-pink-200 relative cursor-pointer flex flex-col justify-between group";
+                card.onclick = () => openModal(item);
+                
+                card.innerHTML = `
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between border-b border-pink-100 pb-2">
+                            <span class="font-fredoka text-xs font-bold text-pink-500 bg-pink-100/80 px-2.5 py-1 rounded-full">
+                                ${item.id}. ${item.name}
+                            </span>
+                            <i class="fa-solid fa-heart text-pink-300 group-hover:text-pink-500 transition-colors text-xs"></i>
+                        </div>
+                        <p class="font-handwriting text-xl text-gray-700 font-semibold line-clamp-3 leading-snug pt-1">
+                            "${item.text}"
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-2 flex items-center justify-between text-[11px] font-bold text-pink-400 opacity-80">
+                        <span>Click to enlarge 💌</span>
+                        <i class="fa-solid fa-arrow-right text-xs transform group-hover:translate-x-1 transition"></i>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Modal Controls
+        function openModal(item) {
+            document.getElementById('modalNumber').innerText = `Student #${item.id}`;
+            document.getElementById('modalName').innerText = item.name;
+            document.getElementById('modalMessage').innerText = `"${item.text}"`;
+            
+            const modal = document.getElementById('cardModal');
+            const container = document.getElementById('modalContainer');
+            
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            container.classList.remove('scale-95');
+            container.classList.add('scale-100');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('cardModal');
+            const container = document.getElementById('modalContainer');
+            
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            container.classList.remove('scale-100');
+            container.classList.add('scale-95');
+        }
+
+        document.getElementById('cardModal').addEventListener('click', (e) => {
+            if (e.target.id === 'cardModal') closeModal();
+        });
+
+       // Floating Hearts Effect (with LocalStorage save)
+         function sendHeart(event) {
+         heartCounter++;
+         // Save new count to browser storage
+         localStorage.setItem('totalHearts', heartCounter);
+         document.getElementById('heartCount').innerText = heartCounter;
+
+         const heart = document.createElement('div');
+          heart.className = 'particle text-2xl';
+          heart.innerHTML = ['❤️', '💖', '💕', '💗', '✨'][Math.floor(Math.random() * 5)];
+         const x = event.clientX || window.innerWidth / 2;
+         const y = event.clientY || window.innerHeight / 2;
+
+         heart.style.left = `${x - 12}px`;
+         heart.style.top = `${y - 12}px`;
+         document.body.appendChild(heart);
+
+         setTimeout(() => heart.remove(), 4000);
+}
+        
+
+        // Confetti Burst Effect
+        function triggerConfetti() {
+            for (let i = 0; i < 35; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const isHeart = Math.random() > 0.5;
+                particle.innerHTML = isHeart ? '💖' : '⭐';
+                
+                const startX = Math.random() * window.innerWidth;
+                const startY = window.innerHeight - 50;
+                
+                particle.style.left = `${startX}px`;
+                particle.style.top = `${startY}px`;
+                
+                document.body.appendChild(particle);
+                setTimeout(() => particle.remove(), 4000);
+            }
+        }
+
+        // Music Toggle
+        let isPlaying = false;
+        function toggleBGM() {
+            const audio = document.getElementById('bgmAudio');
+            const icon = document.getElementById('bgmIcon');
+            const text = document.getElementById('bgmText');
+
+            if (isPlaying) {
+                audio.pause();
+                icon.className = 'fa-solid fa-music text-pink-500';
+                text.innerText = 'Play Music';
+                isPlaying = false;
+            } else {
+                audio.play().then(() => {
+                    icon.className = 'fa-solid fa-pause text-pink-500 animate-spin';
+                    text.innerText = 'Pause Music';
+                    isPlaying = true;
+                }).catch(() => {
+                    console.log("Audio play blocked by browser policy");
+                });
+            }
+        }
+
+        // Load messages & saved heart count on startup
+window.onload = function() {
+    renderCards(nakshiesData);
+    document.getElementById('heartCount').innerText = heartCounter;
+};
+
+    </script>
+</body>
+</html>
